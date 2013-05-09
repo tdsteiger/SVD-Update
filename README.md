@@ -1,8 +1,9 @@
-This project is currently aimed at creating a means to read and write files through Sage. Thus removing the need
-to switch to a different language in order to read in data or write created data to files. This may include reading
-and writing of text-like, csv, image and audio files. We have yet to narrow down the list to specific file types and what
-type of variable types will be created through reading of files. The applications of this project will be explored
-throughout the creation process.
+This project is going to be working to create functions to perform 1-rank updates, downdates and additions
+to a given SVD. This is based off of work by Matthew Brand of Ohio State University. His work, that we are focused on, is
+using a thin decomposition of a matrix. This is all that is needed for most purposes, so that is not a problem.
+The main objective for creating a SVD update algorithm is to create a means to avoid the high cost of recomputing the SVD
+and high memory usage involved in storing large datasets. This is greatly used to break down huge data sets into smaller,
+more managable sets.
 
 Created By:
 Taylor Steiger
