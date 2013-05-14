@@ -7,6 +7,7 @@ more managable sets.
 
 References:
 http://www.merl.com/papers/docs/TR2006-059.pdf
+http://www.stat.osu.edu/~dmsl/thinSVDtracking.pdf
 
 Created By:
 Taylor Steiger
