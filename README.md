@@ -12,3 +12,7 @@ http://www.stat.osu.edu/~dmsl/thinSVDtracking.pdf
 Created By:
 Taylor Steiger
 James Pak
+
+
+Notes to self: use Sage's SVD function to determine "thinness." Utilize output u,v to determine which rows/columns to
+eliminate out of a mxn matrix.
