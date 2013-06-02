@@ -2,6 +2,8 @@ import numpy as np
 
 mat = np.array([[1,2,3],[3,2,5],[5,3,1],[7,7,7]])
 U, s, V = np.linalg.svd(mat, full_matrices = False)
+#c = np.array()
+
 V = np.vstack([V, np.zeros(V.shape[0])])
 S = np.diag(s)
 a = np.array([1,2,4,4])
@@ -19,9 +21,10 @@ q = b - np.dot(V, n)
 Rb = np.linalg.norm(q)
 Q = np.multiply((1 / Rb), q)
 
-K = np.vstack([S, np.zeros(S.shape[0])])
-t = np.vstack([n, Rb])
-t = np.reshape(t, t.shape[0])
-c = np.dot(np.vstack([n, Ra]), t) #this doesn't work, yet
-c = np.reshape(c, (c.shape[0], 1))
-K = np.append(K, c, 1)
+k = np.vstack([S, np.zeros(S.shape[0])])
+K = np.zeros((k.shape[0], k.shape[0]))
+K[:,:-1] = k
+t = np.transpose(np.vstack([m, Ra]))
+stack = np.vstack([n, Rb])
+c = np.dot(stack, t)
+K = np.add(K, c)
