@@ -13,9 +13,10 @@ def svd_update(U, S, V, X, c = None, add = False, down = False):
         else:
             a = X[:,-1] - c
     else:
-        b = np.zeros(V.shape[0])
-        b = np.add(b, 1)
-        #still need to make a for this case... this is the case where you just want to recenter
+        ones = np.zeros(V.shape[0])
+        ones = np.add(b, 1)
+        b = np.reshape(ones, (ones.shape[0], 1))
+        a = np.multiply((-1/X.shape[1]), np.dot(X, ones))
 
     m = np.dot(np.transpose(U), a)
     p = a - np.dot(U, m)
