@@ -2,6 +2,7 @@
 import numpy as np
 
 mat = np.array([[1,2,3],[3,2,5],[5,3,1],[7,7,7]])
+'''
 U, s, V = np.linalg.svd(mat, full_matrices = False)
 V = np.vstack([V, np.zeros(V.shape[0])])
 S = np.diag(s)
@@ -26,7 +27,7 @@ t = np.reshape(t, t.shape[0])
 c = np.dot(np.vstack([n, Ra]), t) #this doesn't work, yet
 c = np.reshape(c, (c.shape[0], 1))
 K = np.append(K, c, 1)
-
+'''
 ones = np.zeros(mat.shape[0])
 ones = np.add(ones, 1)
 ones = np.reshape(ones, (ones.shape[0], 1))
