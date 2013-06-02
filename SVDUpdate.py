@@ -2,7 +2,6 @@ import numpy as np
 
 mat = np.array([[1,2,3],[3,2,5],[5,3,1],[7,7,7]])
 U, s, V = np.linalg.svd(mat, full_matrices = False)
-#c = np.array()
 
 V = np.vstack([V, np.zeros(V.shape[0])])
 S = np.diag(s)
@@ -28,3 +27,10 @@ t = np.transpose(np.vstack([m, Ra]))
 stack = np.vstack([n, Rb])
 c = np.dot(stack, t)
 K = np.add(K, c)
+
+D, P = matrix(K).eigenmatrix_right()
+
+#results
+Uprime = (P.inverse()).transpose()
+Vprime = P
+Sprime = D
