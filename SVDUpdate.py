@@ -16,7 +16,7 @@ def svd_update(U, S, V, X, c = None, add = False, down = False):
         ones = np.zeros(V.shape[0])
         ones = np.add(b, 1)
         b = np.reshape(ones, (ones.shape[0], 1))
-        a = np.multiply((-1/X.shape[1]), np.dot(X, ones))
+        a = np.multiply((-1/X.shape[1]), np.dot(X, b))
 
     m = np.dot(np.transpose(U), a)
     p = a - np.dot(U, m)
