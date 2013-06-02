@@ -7,11 +7,11 @@ def svd_update(U, S, V, X, c = None, add = False, down = False):
         b[-1] = 1
         b = np.reshape(b, (b.shape[0], 1))
         if down:
-            a = np.multiply(X[:,0], -1)
+            a = np.multiply(X[:,-1], -1)
         elif add:
             a = c
         else:
-            a = X[:,0] - c
+            a = X[:,-1] - c
     else:
         b = np.zeros(V.shape[0])
         b = np.add(b, 1)
