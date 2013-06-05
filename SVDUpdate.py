@@ -38,3 +38,4 @@ def svd_update(U, S, V, X, c = None, add = False, down = False):
     D, P = matrix(K).eigenmatrix_right()
 
     return ((P.inverse()).transpose(), D, P)
+    
