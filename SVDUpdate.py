@@ -12,27 +12,27 @@ AUTHORS:
 EXAMPLES::
 
     Update
-    
+
     sage: X = np.array([[1.0,2.0,3.0,4.0],[3.0,2.0,5.0,5.0],[5.0,3.0,1.0,1.0],[7.0,7.0,7.0,7.0]])
     sage: U, s, V = np.linalg.svd(X, full_matrices = False)
     sage: a = np.reshape(np.array([4.0,5.0,1.0,7.0]), (-1, 1))
     sage: U, S, V = svd_update(U, np.diag(s), V, X, a, update = True)
-    
+
     Downdate
-    
+
     sage: X = np.array([[1.0,2.0,3.0,4.0],[3.0,2.0,5.0,5.0],[5.0,3.0,1.0,1.0],[7.0,7.0,7.0,7.0]])
     sage: U, s, V = np.linalg.svd(X, full_matrices = False)
     sage: U, S, V = svd_update(U, np.diag(s), V, X, downdate = True)
-    
+
     Revise
-    
+
     sage: X = np.array([[1.0,2.0,3.0,4.0],[3.0,2.0,5.0,5.0],[5.0,3.0,1.0,1.0],[7.0,7.0,7.0,7.0]])
     sage: U, s, V = np.linalg.svd(X, full_matrices = False)
     sage: a = np.reshape(np.array([4.0,5.0,1.0,7.0]), (-1, 1))
     sage: U, S, V = svd_update(U, np.diag(s), V, X, a)
-    
+
     Recenter
-    
+
     sage: X = np.array([[1.0,2.0,3.0,4.0],[3.0,2.0,5.0,5.0],[5.0,3.0,1.0,1.0],[7.0,7.0,7.0,7.0]])
     sage: U, s, V = np.linalg.svd(X, full_matrices = False)
     sage: U, S, V = svd_update(U, np.diag(s), V, X)
@@ -54,35 +54,35 @@ import numpy as np
 def svd_update(U, S, V, X, c = None, update = False, downdate = False):
     """
     INPUT:
-    
+
     - U -- a (nxn) matrix containing singular vectors of X.
-    
+
     - S -- a (nxn) diagonal matrix containing singular values. the ith diagonal entry is the singular value corresponding to the ith column of U.
-    
+
     - V -- a (nxn) matrix containing singular vectors of X.
-    
+
     - X -- a (mxn or nxm) matrix such that U^T*X*V=S.
-    
+
     - c -- (default: None) a column vector for revision or update of decomposition.
-    
+
     - update -- (default: False) boolean whether to add c to the decomposition. If true, c must also be provided.
-    
+
     - downdate -- (default: False) boolean whether to downdate the decomposition.
-    
+
     OUTPUT:
-    
+
     A 3-tuple consisting of matrices in this order:
-    
+
     1. Transformed U.
     2. Transformed S.
     3. Transformed V.
-    
+
     ALGORITHM:
 
     The SVD rank-1 modification algorithm is described by Matthew Brand
     in the paper at, <http://www.stat.osu.edu/~dmsl/thinSVDtracking.pdf>.
     The algorithm works as follows:
-    
+
     #. Extend V so that both its last column and row are the zero vector.
     #. Compute a and b so that they perform the appropriate transformation.
     #. If updating:
@@ -110,7 +110,7 @@ def svd_update(U, S, V, X, c = None, update = False, downdate = False):
     the true thin SVD of the matrix X. However, testing was conducted with a small matrix X,
     and may be working perfectly fine.
     """
-    
+
     V = np.vstack([V, np.zeros(V.shape[1])])
     if down or type(c) == type(np.array([])):
         b = np.zeros(V.shape[0])
