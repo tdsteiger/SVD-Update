@@ -5,6 +5,9 @@
 \usepackage{hyperref}
 \usepackage{dsfont}
 \usepackage{bbm}
+\usepackage[table]{xcolor}
+\usepackage{booktabs}
+\usepackage{pgfplotstable}
 \begin{document}
 \title{Math 480 Final Project}
 \author{
@@ -165,8 +168,8 @@ These alterations are expressed as:
 $$
 \bf{m} \dot{=} \mathds{U}^T \bf{a}; \hspace{1pc}
 \bf{p} \dot{=} \bf{a} - \mathds{U}\bf{m}; \hspace{1pc}
-\mathds{R}_a = \|\bf{p}\|; \hspace{1pc}          %should this be boldfaced R_a?
-\mathds{P} = \mathds{R}_{a}^{-1} \cdot \bf{p}
+\it{R_a} = \|\bf{p}\|; \hspace{1pc}
+\mathds{P} = \it{R_a}^{-1} \cdot \bf{p}
 $$.
 
 Similarly,
@@ -174,28 +177,46 @@ Similarly,
 $$
 \bf{m} \dot{=} \mathds{V}^T \bf{b}; \hspace{1pc}
 \bf{q} \dot{=} \bf{b} - \mathds{V}\bf{n}; \hspace{1pc}
-\mathds{R}_b = \|\bf{q}\|; \hspace{1pc}        %should this be boldfaced?
-\mathds{Q} = \mathds{R}_{b}^{-1} \cdot \bf{q}
+\it{R_b} = \|\bf{q}\|; \hspace{1pc}
+\mathds{Q} = \it{R_b}^{-1} \cdot \bf{q}
 $$
+\bigskip
+\\
+Expresses the common operations on the last column or on all columns expressed as rank-1 modifications of an SVD $\mathds{USV}^T = \mathds{X}$ to give $\mathds{U}'\mathds{S}'\mathds{V}'^T = \mathds{X} + \bf{ab}^T$\\
+\begin{tabular}{ *5l }    \toprule
+\emph{Operation} & \emph{Known} & \emph{Desired}& \emph{$\bf{a}$} & \emph{$\bf{b}^T$} \\\midrule
+Update    & $\mathds{US}\begin{bmatrix} \mathds{V}^T & 0 \end{bmatrix} = \begin{bmatrix} \mathds{X} & 0 \end{bmatrix}$  & $\mathds{U}'\mathds{S}'\mathds{V}'^T = \begin{bmatrix} \mathds{X} & \bf{c} \end{bmatrix}$& $\bf{c}$  & $\begin{bmatrix} 0, \ldots, 0, 1 \end{bmatrix}$  \\
+Downdate & $\mathds{USV}^T = \begin{bmatrix} \mathds{X} & \bf{c} \end{bmatrix}$ & $\mathds{U}'\mathds{S}'\mathds{V}'^T = \mathds{X}$ & \bf{-c} & $\begin{bmatrix} 0, \ldots, 0, 1 \end{bmatrix}$\\
+Revise & $\mathds{USV}^T = \begin{bmatrix} \mathds{X} & \bf{c} \end{bmatrix}$ & $\mathds{U}'\mathds{S}'\mathds{V}'^T = \begin{bmatrix} \mathds{X} & \bf{d} \end{bmatrix}$ & \bf{d-c} & $\begin{bmatrix} 0, \ldots, 0, 1 \end{bmatrix}$\\
+Recenter & $\mathds{USV}^T= \mathds{X}$ & $\mathds{U}' \mathds{S}' \mathds{V}' ^T = \mathds{X} \left{(} \mathds{I} - \frac{1}{q} \bf{11}^\it{T} \right{)} $ & $ - \frac{1}{q} \mathds{X}\bf{1}$& \bf{1}^T \dot{=}  $\begin{bmatrix} 1, \ldots, 1 \end{bmatrix}$\\\bottomrule
+ \hline
+\end{tabular}
+\bigskip
 
 
-\subsection{Update\label{update}}
-\subsection{Downdate\label{downdate}}
-\subsection{Revise\label{revise}}
-\subsection{Recenter\label{recenter}}
 
-For each operate in subsection~\ref{update}~-~\ref{recenter}
+The equation:
+$$
+\mathds{K}=
+\begin{bmatrix}
+\mathds{S} & \bf{0}\\
+\bf{0} & 0
+\end{bmatrix}
++
+\begin{bmatrix}
+\bf{m}\\
+\|\bf{p}\|
+\end{bmatrix}
+\begin{bmatrix}
+\bf{n}\\
+\|\bf{q}\|
+\end{bmatrix}^T
+$$
+gets simplified to a diagonal $+$ rank-1 matrix.
+Table 1 shows that specializations of the above equation are the various cases of updating, downdating, and revising individual columns of the SVD.
 
-\begin{enumerate}
-\item Known for~\ref{update}:
-$$US\begin{bmatrix}V^T & 0 \end{bmatrix}= \begin{bmatrix}X & 0\end{bmatrix}$$
-\item Known for~\ref{downdate}:
-$$USV^T= \begin{bmatrix}X & c\end{bmatrix}$$
-\item Known for~\ref{revise}:
-$$USV^T= \begin{bmatrix}X & c\end{bmatrix}$$
-\item Known for~\ref{recenter}:
-$$USV^T= X$$
-\end{enumerate}
+
+
 
 \section{Reference\label{reference}}
 All work within the above sections is taken from Matthew Brand's article on \href{http://www.stat.osu.edu/~dmsl/thinSVDtracking.pdf}{"Fast low-rank modifications of the thin singular value decomposition."}
