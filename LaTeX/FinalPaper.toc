@@ -4,3 +4,4 @@
 \contentsline {section}{\numberline {4}Additive Modification}{3}{section.4}
 \contentsline {section}{\numberline {5}Rank-1 Modification}{4}{section.5}
 \contentsline {section}{\numberline {6}Reference}{5}{section.6}
+\contentsline {section}{\numberline {7}Implementation in SAGE}{5}{section.7}

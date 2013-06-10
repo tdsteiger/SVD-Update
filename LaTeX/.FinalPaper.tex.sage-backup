@@ -8,6 +8,7 @@
 \usepackage[table]{xcolor}
 \usepackage{booktabs}
 \usepackage{pgfplotstable}
+\usepackage{graphicx}
 \begin{document}
 \title{Math 480 Final Project}
 \author{
@@ -220,5 +221,20 @@ Table 1 shows that specializations of the above equation are the various cases o
 
 \section{Reference\label{reference}}
 All work within the above sections is taken from Matthew Brand's article on \href{http://www.stat.osu.edu/~dmsl/thinSVDtracking.pdf}{"Fast low-rank modifications of the thin singular value decomposition."}
+
+
+
+
+\section{Implementation in SAGE\label{sage}}
+
+
+\begin{figure}[ht!]
+\includegraphics[width=33pc]{SVDUpdate.pdf}
+\caption{SAGE's documentation for the SVDUpdate function}
+\label{overflow}
+\end{figure}
+
+
+
 
 \end{document}

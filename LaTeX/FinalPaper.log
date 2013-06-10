@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.4.25)  10 JUN 2013 12:24
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.4.25)  10 JUN 2013 14:16
 entering extended mode
  %&-line parsing enabled.
 **\input FinalPaper.tex
@@ -623,21 +623,21 @@ LaTeX Warning: Label `intro' multiply defined.
 )
 \openout1 = `FinalPaper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 11.
-LaTeX Font Info:    ... okay on input line 11.
-Package hyperref Info: Link coloring OFF on input line 11.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 12.
+LaTeX Font Info:    ... okay on input line 12.
+Package hyperref Info: Link coloring OFF on input line 12.
  (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
 Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
 
@@ -646,8 +646,8 @@ Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
 \c@section@level=\count141
 )
-LaTeX Info: Redefining \ref on input line 11.
-LaTeX Info: Redefining \pageref on input line 11.
+LaTeX Info: Redefining \ref on input line 12.
+LaTeX Info: Redefining \pageref on input line 12.
  (./FinalPaper.out)
 (./FinalPaper.out)
 \@outlinefile=\write5
@@ -676,7 +676,7 @@ LaTeX Info: Redefining \pageref on input line 11.
 Missing character: There is no Ô in font cmr10!
 Missing character: There is no ¨ in font cmr10!
 Missing character: There is no Å in font cmr10!
-LaTeX Font Info:    Try loading font information for U+dsrom on input line 35.
+LaTeX Font Info:    Try loading font information for U+dsrom on input line 36.
 
 (/usr/share/texmf-texlive/tex/latex/doublestroke/Udsrom.fd
 File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
@@ -684,14 +684,14 @@ File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
 Missing character: There is no b in font dsrom10!
 
 ! Double superscript.
-l.191 ... & $\mathds{U}' \mathds{S}' \mathds{V}' ^
+l.192 ... & $\mathds{U}' \mathds{S}' \mathds{V}' ^
                                                   T = \mathds{X} \left{(} \m...
 I treat `x^1^2' essentially like `x^1{}^2'.
 
 ! Missing delimiter (. inserted).
 <to be read again> 
                    {
-l.191 ...ds{S}' \mathds{V}' ^T = \mathds{X} \left{
+l.192 ...ds{S}' \mathds{V}' ^T = \mathds{X} \left{
                                                   (} \mathds{I} - \frac{1}{q...
 I was expecting to see something like `(' or `\{' or
 `\}' here. If you typed, e.g., `{' instead of `\{', you
@@ -703,7 +703,7 @@ nonnegative, or you can use `\delimiter <delimiter code>'.
 ! Missing { inserted.
 <to be read again> 
                    \let 
-l.191 ...t{(} \mathds{I} - \frac{1}{q} \bf{11}^\it
+l.192 ...t{(} \mathds{I} - \frac{1}{q} \bf{11}^\it
                                                   {T} \right{)} $ & $ - \fra...
 A left brace was mandatory here, so I've put one in.
 You might want to delete and/or insert some corrections
@@ -713,7 +713,7 @@ so that I will find a matching right brace soon.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.191 ...ds{I} - \frac{1}{q} \bf{11}^\it{T} \right
+l.192 ...ds{I} - \frac{1}{q} \bf{11}^\it{T} \right
                                                   {)} $ & $ - \frac{1}{q} \m...
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -724,7 +724,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing delimiter (. inserted).
 <to be read again> 
                    {
-l.191 ...s{I} - \frac{1}{q} \bf{11}^\it{T} \right{
+l.192 ...s{I} - \frac{1}{q} \bf{11}^\it{T} \right{
                                                   )} $ & $ - \frac{1}{q} \ma...
 I was expecting to see something like `(' or `\{' or
 `\}' here. If you typed, e.g., `{' instead of `\{', you
@@ -736,7 +736,7 @@ nonnegative, or you can use `\delimiter <delimiter code>'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.191 ... - \frac{1}{q} \mathds{X}\bf{1}$& \bf{1}^
+l.192 ... - \frac{1}{q} \mathds{X}\bf{1}$& \bf{1}^
                                                   T \dot{=}  $\begin{bmatrix...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -744,7 +744,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.191 ...f{1}$& \bf{1}^T \dot{=}  $\begin{bmatrix}
+l.192 ...f{1}$& \bf{1}^T \dot{=}  $\begin{bmatrix}
                                                    1, \ldots, 1 \end{bmatrix...
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -752,7 +752,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.191 ...begin{bmatrix} 1, \ldots, 1 \end{bmatrix}
+l.192 ...begin{bmatrix} 1, \ldots, 1 \end{bmatrix}
                                                   $\\\bottomrule
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -763,7 +763,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.191 ... 1, \ldots, 1 \end{bmatrix}$\\\bottomrule
+l.192 ... 1, \ldots, 1 \end{bmatrix}$\\\bottomrule
                                                   
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -772,20 +772,33 @@ really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
 
-Overfull \hbox (60.1029pt too wide) in paragraph at lines 182--195
+Overfull \hbox (60.1029pt too wide) in paragraph at lines 183--196
 []
  []
 
-[4] [5] (./FinalPaper.aux)
+[4]
+
+! LaTeX Error: Unknown graphics extension: .py.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.232 \includegraphics[width=33pc]{SVDUpdate.py}
+                                                
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+[5] (./FinalPaper.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 17237 strings out of 493848
- 355171 string characters out of 1152823
+ 17247 strings out of 493848
+ 355256 string characters out of 1152823
  468567 words of memory out of 3000000
- 20125 multiletter control sequences out of 15000+50000
+ 20131 multiletter control sequences out of 15000+50000
  10836 words of font info for 41 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  70i,16n,63p,771b,301s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -804,9 +817,9 @@ ti10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti7.pfb></u
 sr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/te
 xmf-texlive/fonts/type1/public/doublestroke/dsrom10.pfb></usr/share/texmf-texli
 ve/fonts/type1/public/doublestroke/dsrom8.pfb>
-Output written on FinalPaper.pdf (5 pages, 182832 bytes).
+Output written on FinalPaper.pdf (5 pages, 185370 bytes).
 PDF statistics:
- 134 PDF objects out of 1000 (max. 8388607)
- 13 named destinations out of 1000 (max. 500000)
- 61 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 140 PDF objects out of 1000 (max. 8388607)
+ 15 named destinations out of 1000 (max. 500000)
+ 69 words of extra memory for PDF output out of 10000 (max. 10000000)
 
