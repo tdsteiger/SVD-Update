@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.4.25)  10 JUN 2013 15:04
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.4.25)  10 JUN 2013 15:22
 entering extended mode
  %&-line parsing enabled.
 **\input FinalPaper.tex
@@ -620,6 +620,9 @@ File: pgflibraryplotmarks.code.tex 2010/10/15 v2.10 (rcs-revision 1.12)
 
 LaTeX Warning: Label `intro' multiply defined.
 
+
+LaTeX Warning: Label `overflow' multiply defined.
+
 )
 \openout1 = `FinalPaper.aux'.
 
@@ -781,38 +784,50 @@ Overfull \hbox (60.1029pt too wide) in paragraph at lines 183--196
 Package pdftex.def Warning: Option `bb' does not make sense,
 (pdftex.def)                using `viewport' instead on input line 233.
 
-<svd.pdf, id=77, 614.295pt x 794.97pt>
-File: svd.pdf Graphic file (type pdf)
- <use svd.pdf>
-Overfull \hbox (269.29349pt too wide) in paragraph at lines 233--234
- [] 
- []
+<half1.pdf, id=77, page=1, 614.295pt x 794.97pt>
+File: half1.pdf Graphic file (type pdf)
+ <use half1.pdf, page 1>
 
-! Extra }, or forgotten \endgroup.
-l.234 ...ocumentation for the SVDUpdate function}}
-                                                  
-I've deleted a group-closing symbol because it seems to be
-spurious, as in `$x}$'. But perhaps the } is legitimate and
-you forgot something else, as in `\hbox{$x}'. In such cases
-the way to recover is to insert both the forgotten and the
-deleted material, e.g., by typing `I$}'.
+Package pdftex.def Warning: Option `bb' does not make sense,
+(pdftex.def)                using `viewport' instead on input line 234.
+
+<half1.pdf, id=78, page=2, 614.295pt x 794.97pt>
+File: half1.pdf Graphic file (type pdf)
+ <use half1.pdf, page 2>
+
+LaTeX Warning: Float too large for page by 147.56331pt on input line 237.
 
 
-LaTeX Warning: Float too large for page by 63.10301pt on input line 237.
+Package pdftex.def Warning: Option `bb' does not make sense,
+(pdftex.def)                using `viewport' instead on input line 241.
 
-[5] [6 <./svd.pdf>] (./FinalPaper.aux)
+<half2.pdf, id=79, page=1, 614.295pt x 794.97pt>
+File: half2.pdf Graphic file (type pdf)
+ <use half2.pdf, page 1>
+
+Package pdftex.def Warning: Option `bb' does not make sense,
+(pdftex.def)                using `viewport' instead on input line 242.
+
+<half2.pdf, id=80, page=2, 614.295pt x 794.97pt>
+File: half2.pdf Graphic file (type pdf)
+ <use half2.pdf, page 2>
+
+LaTeX Warning: Float too large for page by 147.56331pt on input line 245.
+
+[5] [6 <./half1.pdf> <./half1.pdf>] [7 <./half2.pdf> <./half2.pdf>]
+(./FinalPaper.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 17250 strings out of 493848
- 355292 string characters out of 1152823
+ 17259 strings out of 493848
+ 355451 string characters out of 1152823
  468567 words of memory out of 3000000
- 20134 multiletter control sequences out of 15000+50000
+ 20142 multiletter control sequences out of 15000+50000
  10836 words of font info for 41 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 70i,16n,63p,771b,301s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 70i,16n,63p,771b,303s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
 re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-te
 xlive/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texmf-texlive/fonts/
@@ -828,9 +843,9 @@ ti10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti7.pfb></u
 sr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/te
 xmf-texlive/fonts/type1/public/doublestroke/dsrom10.pfb></usr/share/texmf-texli
 ve/fonts/type1/public/doublestroke/dsrom8.pfb>
-Output written on FinalPaper.pdf (6 pages, 213866 bytes).
+Output written on FinalPaper.pdf (7 pages, 232388 bytes).
 PDF statistics:
- 166 PDF objects out of 1000 (max. 8388607)
+ 189 PDF objects out of 1000 (max. 8388607)
  16 named destinations out of 1000 (max. 500000)
- 74 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 89 words of extra memory for PDF output out of 10000 (max. 10000000)
 
