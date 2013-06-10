@@ -1,6 +1,63 @@
 import numpy as np
 
 def svd_update(U, S, V, X, c = None, add = False, down = False):
+    r"""
+    Updates to the thin SVD using NumPy.
+
+
+
+    AUTHORS:
+
+    - Taylor Steiger, James Pak (2013-06-10): initial version
+
+
+    EXAMPLES::
+
+        Update
+        
+        sage: X = np.array([[1.0,2.0,3.0,4.0],[3.0,2.0,5.0,5.0],[5.0,3.0,1.0,1.0],[7.0,7.0,7.0,7.0]])
+        sage: U, s, V = np.linalg.svd(X, full_matrices = False)
+        sage: a = np.reshape(np.array([4.0,5.0,1.0,7.0]), (-1, 1))
+        sage: U, S, V = svd_update(U, np.diag(s), V, X, a, add = True)
+        
+        Downdate
+        
+        sage: X = np.array([[1.0,2.0,3.0,4.0],[3.0,2.0,5.0,5.0],[5.0,3.0,1.0,1.0],[7.0,7.0,7.0,7.0]])
+        sage: U, s, V = np.linalg.svd(X, full_matrices = False)
+        sage: U, S, V = svd_update(U, np.diag(s), V, X, down = True)
+        
+        Revise
+        
+        sage: X = np.array([[1.0,2.0,3.0,4.0],[3.0,2.0,5.0,5.0],[5.0,3.0,1.0,1.0],[7.0,7.0,7.0,7.0]])
+        sage: U, s, V = np.linalg.svd(X, full_matrices = False)
+        sage: a = np.reshape(np.array([4.0,5.0,1.0,7.0]), (-1, 1))
+        sage: U, S, V = svd_update(U, np.diag(s), V, X, a)
+        
+        Recenter
+        
+        sage: X = np.array([[1.0,2.0,3.0,4.0],[3.0,2.0,5.0,5.0],[5.0,3.0,1.0,1.0],[7.0,7.0,7.0,7.0]])
+        sage: U, s, V = np.linalg.svd(X, full_matrices = False)
+        sage: U, S, V = svd_update(U, np.diag(s), V, X)
+        
+
+    TESTS::
+
+        sage: a = matrix(RDF,2,range(4), sparse=False)
+        sage: TestSuite(a).run()
+        sage: a = matrix(CDF,2,range(4), sparse=False)
+        sage: TestSuite(a).run()
+    """
+
+    #*****************************************************************************
+    #       Copyright (C) 2013 Taylor Steiger <tsteiger@uw.edu>
+    #       Copyright (C) 2013 James Pak <jimmypak@uw.edu>
+    #
+    #  Distributed under the terms of the GNU General Public License (GPL)
+    #  as published by the Free Software Foundation; either version 2 of
+    #  the License, or (at your option) any later version.
+    #                  http://www.gnu.org/licenses/
+    #*****************************************************************************
+    
     V = np.vstack([V, np.zeros(V.shape[1])])
     if down or type(c) == type(np.array([])):
         b = np.zeros(V.shape[0])
