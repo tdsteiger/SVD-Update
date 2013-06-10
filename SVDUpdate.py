@@ -5,6 +5,7 @@ def svd_update(U, S, V, X, c = None, add = False, down = False):
     Updates to the thin SVD using NumPy.
 
     This function is a SAGE replication of Matthew Brand's article on "Fast low-rank modiﬁcations of the thin singular value decomposition." <http://www.stat.osu.edu/~dmsl/thinSVDtracking.pdf>
+    This function is an approximation to the true thin SVD, therefore, no tests are provided.
 
     AUTHORS:
 
