@@ -103,6 +103,12 @@ def svd_update(U, S, V, X, c = None, update = False, downdate = False):
     #. K = [S 0] * [m ] *[n ]^T
     #.     [0 0]   [Ra]  [Rb]
     #. Diagonalize K.
+    
+    WARNING::
+
+    During testing, this code showed strong deviations, since it is an approximation, from
+    the true thin SVD of the matrix X. However, testing was conducted with a small matrix X,
+    and may be working perfectly fine.
     """
     
     V = np.vstack([V, np.zeros(V.shape[1])])
