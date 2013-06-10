@@ -1,7 +1,7 @@
 import numpy as np
 
 def svd_update(U, S, V, X, c = None, add = False, down = False):
-    V = np.vstack([V, np.zeros(V.shape[0])])
+    V = np.vstack([V, np.zeros(V.shape[1])])
     if down or type(c) == type(np.array([])):
         b = np.zeros(V.shape[0])
         b[-1] = 1
@@ -27,13 +27,16 @@ def svd_update(U, S, V, X, c = None, add = False, down = False):
     Rb = np.linalg.norm(q)
     Q = np.multiply((1 / Rb), q)
 
-    k = np.vstack([S, np.zeros(S.shape[0])])
-    K = np.zeros((k.shape[0], k.shape[0]))
-    K[:,:-1] = k
-    t = np.transpose(np.vstack([m, Ra]))
-    stack = np.vstack([n, Rb])
+    k = S
+    K = np.zeros((k.shape[0] + 1, k.shape[0] + 1))
+    K[:-1,:-1] = k
+    stack = np.vstack(np.append(m, Ra))
+    t = np.reshape(np.append(n, Rb), (1, -1))
     dot = np.dot(stack, t)
+    print K
+    print dot
     K = np.add(K, dot)
+    print K
 
     D, P = matrix(K).eigenmatrix_right()
 
