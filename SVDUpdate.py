@@ -55,17 +55,19 @@ def svd_update(U, S, V, X, c = None, update = False, downdate = False):
     """
     INPUT:
     
-    U -- a (nxn) matrix containing singular vectors.
+    - U -- a (nxn) matrix containing singular vectors of X.
     
-    S -- a (nxn) diagonal matrix containing singular values. the ith diagonal entry is the singular value corresponding to the ith column of U
+    - S -- a (nxn) diagonal matrix containing singular values. the ith diagonal entry is the singular value corresponding to the ith column of U.
     
-    V -- a (nxn) matrix containing singular vectors.
+    - V -- a (nxn) matrix containing singular vectors of X.
     
-    c -- (default: None) a column vector for revision or update of decomposition.
+    - X -- a (mxn or nxm) matrix such that U^T*X*V=S.
     
-    update -- (default: False) boolean whether to add c to the decomposition. If true, c must also be provided.
+    - c -- (default: None) a column vector for revision or update of decomposition.
     
-    downdate -- (default: False) boolean whether to downdate the decomposition.
+    - update -- (default: False) boolean whether to add c to the decomposition. If true, c must also be provided.
+    
+    - downdate -- (default: False) boolean whether to downdate the decomposition.
     
     OUTPUT:
     
@@ -74,6 +76,33 @@ def svd_update(U, S, V, X, c = None, update = False, downdate = False):
     1. Transformed U.
     2. Transformed S.
     3. Transformed V.
+    
+    ALGORITHM:
+
+    The SVD rank-1 modification algorithm is described by Matthew Brand
+    in the paper at, <http://www.stat.osu.edu/~dmsl/thinSVDtracking.pdf>.
+    The algorithm works as follows:
+    
+    #. Extend V so that both its last column and row are the zero vector.
+    #. Compute a and b so that they perform the appropriate transformation.
+    #. If updating:
+    #.    a = c, b^T = [0,...,0,1]
+    #. Else if downdating:
+    #.    a = X[:,-1], b^T = [0,...,0,1]
+    #. Else if revising:
+    #.    a = X[:,-1] - c, b^T = [0,...,0,1]
+    #. Else: #recentering
+    #.    a = X * (I − (1/q) * (l * l^T)) # l = [1,...,1]
+    #. Compute m, p, Ra and P.
+    #. m = U^T * a
+    #. p = a - U * m
+    #. Ra = ||p||
+    #. P = Ra^(-1) * p
+    #. Compute n, q, Rb and Q, similarly to the previous step with substitution of b for a.
+    #. Compute K.
+    #. K = [S 0] * [m ] *[n ]^T
+    #.     [0 0]   [Ra]  [Rb]
+    #. Diagonalize K.
     """
     
     V = np.vstack([V, np.zeros(V.shape[1])])
