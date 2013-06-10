@@ -1,0 +1,203 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage{dsfont}
+\usepackage{bbm}
+\begin{document}
+\title{Math 480 Final Project}
+\author{
+  Steiger, Taylor\\
+  \texttt{tsteiger@uw.edu}
+  \and
+  Pak, James\\
+  \texttt{jimmypak@uw.edu}
+}
+\date{Spring 2013}
+\maketitle
+
+\newpage
+\tableofcontents
+\newpage
+
+\section{Preface\label{intro}}
+Taylor and James are current undergraduates in the mathematics department at the University of Washington. This paper is their final project for their Math 480 class. Upon reviewing the elements of SAGE dedicated to SVD's, they concluded there was not the functionality included in SAGE necessary to perform rank 1 modifications to the thin SVD. Taylor and James used an article published my Matthew Brand on the mathematics behind rank 1 modifications to the thin SVD titled, "Fast low-rank modiﬁcations of the thin singular value decomposition," in order to implement this new funcitonality into SAGE. This paper outlines the steps Brand took and then concludes with a section of the included functionality of SAGE created by Taylor and James.
+
+\section{Introduction\label{intro}}
+Matthew Brand created an algorithm to approximate rank-1 additive modifications to the thin SVD. This paper uses Brand's algorithm and published paper to summarize the process and implement it within SAGE. It is important to note that this paper by James and Taylor only uses the first 3 sections of Brand's paper. Brand's paper is referenced at the end of this paper.
+
+
+\section{SVD\label{svd}}
+Consider the real matrix $\mathds{X}{\epsilon}{\mathds{R}^{p\mathrm{x}q}}$.
+Then the singular value decomposition (SVD) diagnolizes $\mathds{X}$ with orthonormal matrices $\mathds{U}\epsilon \mathds{R}^{p\mathrm{x}p}$ and $\mathds{V} \epsilon \mathds{R}\label{R}^{q\mathrm{x}q}$.
+Then $\mathds{S}=\mathds{U}^T\mathds{X}\mathds{V}$ is diagonal and nonnegative. This is equivalent to saying that it decomposes $\mathds{X}$ into sums of rank-1 matrices from singular value triplets: $\mathds{X} = \mathds{U}\mathrm{diag}{(s)}\mathds{V}^T = \sum_{i} \mathbf{u}_{i} s_{i} \mathbf{v}_{i}^T$ for singluar values of $s_{i}$ on the diagonal of $\mathds{S}$ and singular vectors $\mathbf{u}_{i}$ and $\mathbf{v}_{i}$ taken from the columns of $\mathds{U}$ and $\mathds{V}$.
+
+
+\section{Additive Modification\label{additive}}
+Let $\mathds{A} \epsilon \mathds{R}^{p\mathrm{x}c}$ and $\mathds{B} \epsilon \mathds{R}^{p\mathrm{x}c}$ be arbitrary matrices of rank $c$ and $\mathds{X}{\epsilon}{\mathds{R}^{p\mathrm{x}q}}$ have rank $r$ and economy SVD $\mathds{USV}^T = \mathds{X}$ with $\mathds{S}\epsilon\mathds{R}^{r\mathrm{x}r}$.
+Then we are interested in the SVD of the sum:
+$$
+\mathds{X} + \mathds{AB}^T =
+\begin{bmatrix}
+\mathds{U} & \mathds{A}
+\end{bmatrix}
+\begin{bmatrix}
+\mathds{S} & 0 \\
+0 & \mathds{I}
+\end{bmatrix}
+\begin{bmatrix}
+\mathds{V} & \mathds{B}
+\end{bmatrix}^T
+$$
+
+Furthermore, let $\mathds{P}$ be the orthogonal basis of the column space of $(\mathds{I}-\mathds{UU}^T)\mathds{A}$ and let $\mathds{R_A}=\mathds{P}^T(\mathds{I}-\mathds{UU}^T)\mathds{A}$.
+
+Then
+$$
+\begin{bmatrix}
+\mathds{U} & \mathds{A}
+\end{bmatrix}
+=
+\begin{bmatrix}
+\mathds{U} & \mathds{P}
+\end{bmatrix}
+\begin{bmatrix}
+\mathds{I} & \mathds{U}^T\mathds{A} \\
+0 & \mathds{R_A}
+\end{bmatrix}
+$$.
+
+Let $\mathds{QR_B}=(\mathds{I}-\mathds{VV}^T)\mathds{B}$.
+
+Then
+$$
+\mathds{X}+\mathds{AB}^T =
+\begin{bmatrix}
+\mathds{U} & \mathds{P}
+\end{bmatrix}
+\mathds{K}
+\begin{bmatrix}
+\mathds{V} & \mathds{Q}
+\end{bmatrix}^T
+$$
+
+and
+
+$$
+\mathds{K}=
+\begin{bmatrix}
+\mathds{I} & \mathds{U}^T\mathds{A}\\
+0 & \mathds{R_A}
+\end{bmatrix}
+\begin{bmatrix}
+\mathds{S} & 0\\
+0 & \mathds{I}
+\end{bmatrix}
+\begin{bmatrix}
+\mathds{I} & \mathds{V}^T\mathds{B}\\
+0 & \mathds{R_B}
+\end{bmatrix}^T
+=
+\begin{bmatrix}
+\mathds{S} & 0\\
+0 & 0
+\end{bmatrix}
++
+\begin{bmatrix}
+\mathds{U}^T\mathds{A}\\
+\mathds{R_A}
+\end{bmatrix}
+\begin{bmatrix}
+\mathds{V}^T\mathds{B}\\
+\mathds{R_B}
+\end{bmatrix}^T
+$$.
+
+Diagonalizing $\mathds{K}$ as $\mathds{U}'^T\mathds{KV}'=\mathds{S}'$ gives the rotations $\mathds{U}'$ and $\mathds{V}'$ of the extended subspaces
+$
+\begin{bmatrix}
+\mathds{U} & \mathds{P}
+\end{bmatrix}
+$
+and
+$
+\begin{bmatrix}
+\mathds{V} & \mathds{Q}
+\end{bmatrix}
+$
+such that
+$$
+\mathds{X}+\mathds{AB}^T = \left(
+\begin{bmatrix}
+\mathds{U} & \mathds{P}
+\end{bmatrix}
+\mathds{U}' \right)
+\mathds{S}'\left(
+\begin{bmatrix}
+\mathds{V} & \mathds{Q}
+\end{bmatrix}
+\mathds{V}'\right)^T
+$$
+is the desired SVD.
+
+
+\section{Rank-1 Modification\label{rank}}
+For the SVD of $\mathds{USV}^T + \mathds{ab}^T$ with vectors $\bf{a}\epsilon\mathds{R}^p$ and $\bf{b}\epsilon\mathds{R}^q$, the equation:
+
+$$
+\begin{bmatrix}
+\mathds{U} & \mathds{A}
+\end{bmatrix}
+=
+\begin{bmatrix}
+\mathds{U} & \mathds{P}
+\end{bmatrix}
+\begin{bmatrix}
+\mathds{I} & \mathds{U}^T\mathds{A} \\
+0 & \mathds{R_A}
+\end{bmatrix}
+$$
+
+can be changed in a partial step by the modified Gram-Schmidt algorithm.
+These alterations are expressed as:
+
+$$
+\bf{m} \dot{=} \mathds{U}^T \bf{a}; \hspace{1pc}
+\bf{p} \dot{=} \bf{a} - \mathds{U}\bf{m}; \hspace{1pc}
+\mathds{R}_a = \|\bf{p}\|; \hspace{1pc}          %should this be boldfaced R_a?
+\mathds{P} = \mathds{R}_{a}^{-1} \cdot \bf{p}
+$$.
+
+Similarly,
+
+$$
+\bf{m} \dot{=} \mathds{V}^T \bf{b}; \hspace{1pc}
+\bf{q} \dot{=} \bf{b} - \mathds{V}\bf{n}; \hspace{1pc}
+\mathds{R}_b = \|\bf{q}\|; \hspace{1pc}        %should this be boldfaced?
+\mathds{Q} = \mathds{R}_{b}^{-1} \cdot \bf{q}
+$$
+
+
+\subsection{Update\label{update}}
+\subsection{Downdate\label{downdate}}
+\subsection{Revise\label{revise}}
+\subsection{Recenter\label{recenter}}
+
+For each operate in subsection~\ref{update}~-~\ref{recenter}
+
+\begin{enumerate}
+\item Known for~\ref{update}:
+$$US\begin{bmatrix}V^T & 0 \end{bmatrix}= \begin{bmatrix}X & 0\end{bmatrix}$$
+\item Known for~\ref{downdate}:
+$$USV^T= \begin{bmatrix}X & c\end{bmatrix}$$
+\item Known for~\ref{revise}:
+$$USV^T= \begin{bmatrix}X & c\end{bmatrix}$$
+\item Known for~\ref{recenter}:
+$$USV^T= X$$
+\end{enumerate}
+
+\section{Reference\label{reference}}
+All work within the above sections is taken from Matthew Brand's article on \href{http://www.stat.osu.edu/~dmsl/thinSVDtracking.pdf}{"Fast low-rank modifications of the thin singular value decomposition."}
+
+\end{document}
