@@ -4,7 +4,7 @@ def svd_update(U, S, V, X, c = None, add = False, down = False):
     r"""
     Updates to the thin SVD using NumPy.
 
-
+    This function is a SAGE replication of Matthew Brand's article on "Fast low-rank modiﬁcations of the thin singular value decomposition." <http://www.stat.osu.edu/~dmsl/thinSVDtracking.pdf>
 
     AUTHORS:
 
@@ -38,14 +38,7 @@ def svd_update(U, S, V, X, c = None, add = False, down = False):
         sage: X = np.array([[1.0,2.0,3.0,4.0],[3.0,2.0,5.0,5.0],[5.0,3.0,1.0,1.0],[7.0,7.0,7.0,7.0]])
         sage: U, s, V = np.linalg.svd(X, full_matrices = False)
         sage: U, S, V = svd_update(U, np.diag(s), V, X)
-        
 
-    TESTS::
-
-        sage: a = matrix(RDF,2,range(4), sparse=False)
-        sage: TestSuite(a).run()
-        sage: a = matrix(CDF,2,range(4), sparse=False)
-        sage: TestSuite(a).run()
     """
 
     #*****************************************************************************
