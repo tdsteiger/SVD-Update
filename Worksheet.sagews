@@ -34,6 +34,7 @@ ones = np.reshape(ones, (ones.shape[0], 1))
 mat2 = np.multiply(mat, ones)
 mat
 mat2
+<<<<<<< HEAD
 ︡ab352360-8294-479b-9f52-ce93293391d6︡{"stderr":"Error in lines 22-22\nTraceback (most recent call last):\n  File \"/mnt/home/vHa2OGCG/.sagemathcloud/sage_server.py\", line 412, in execute\n    exec compile(block, '', 'single') in namespace, locals\n  File \"\", line 1, in <module>\nValueError: matrices are not aligned\n"}︡
 ︠160ac76d-1d93-4a44-b751-62ad77626f1c︠
 search_def('SVD')
@@ -48,3 +49,7 @@ search_def('SVD')
 
 
 
+=======
+︡2efc46cd-cf80-4470-b03f-3d79822c5cb1︡{"stderr":"Error in lines 22-22\nTraceback (most recent call last):\n  File \"/mnt/home/vHa2OGCG/.sagemathcloud/sage_server.py\", line 412, in execute\n    exec compile(block, '', 'single') in namespace, locals\n  File \"\", line 1, in <module>\nValueError: matrices are not aligned\n"}︡
+︠37be6385-e11f-4248-848e-0d648b318cbf︠
+>>>>>>> 95209e32ad5638cc6d2774d50751a4ca549dd636
