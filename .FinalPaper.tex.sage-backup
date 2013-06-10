@@ -1,0 +1,158 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{enumerate}
+\usepackage{hyperref}
+\begin{document}
+\title{Math 480 Final Project}
+\author{
+  Steiger, Taylor\\
+  \texttt{tsteiger@uw.edu}
+  \and
+  Pak, James\\
+  \texttt{jimmypak@uw.edu}
+}
+\date{Spring 2013}
+\maketitle
+
+\section{Preface\label{intro}}
+Taylor and James are current undergraduates in the mathematics department at the University of Washington. This paper is their final project for their Math 480 class. Upon reviewing the elements of SAGE dedicated to SVD's, they concluded there was not the functionality included in SAGE necessary to perform rank 1 modifications to the thin SVD. Taylor and James used an article published my Matthew Brand on the mathematics behind rank 1 modifications to the thin SVD titled, "Fast low-rank modiﬁcations of the thin singular value decomposition," in order to implement this new funcitonality into SAGE. This paper outlines the steps Brand took and then the included functionality of SAGE created by Taylor and James.
+
+
+
+\section{SVD\label{svd}}
+Consider the real matrix $X\label{X}{\epsilon}{\mathbb{R}^{p\mathrm{x}q}}$.
+Then the singular value decomposition (SVD) diagnolizes $X$ with orthonormal matrices $U \epsilon \mathbb{R}^{p\mathrm{x}p}$ and $V \epsilon \mathbb{R}^{q\mathrm{x}q}$
+Note that $S=U^TXV$.
+
+\subsection{Formula's\label{forumlas}}
+For Additive Modification, see Section~\ref{additive}.
+For Rank-1 Modification, see Section~\ref{rank}.
+
+\section{Additive Modification\label{additive}}
+Let $A \epsilon \mathbb{R}^{p\mathrm{x}c}$ and $B \epsilon \mathbb{R}^{p\mathrm{x}c}$. Then
+$$
+X + AB^T =
+\begin{bmatrix}
+U & A
+\end{bmatrix}
+\begin{bmatrix}
+S & 0 \\
+0 & I
+\end{bmatrix}
+\begin{bmatrix}
+V & B
+\end{bmatrix}^T
+$$
+
+Furthermore, let P be the orthogonal basis of the column space of $(I-UU^T)A$ and $R_A=P^T(I-UU^T)A$
+$$
+\begin{bmatrix}
+U & A
+\end{bmatrix}
+=
+\begin{bmatrix}
+U & P
+\end{bmatrix}
+\begin{bmatrix}
+I & U^TA \\
+0 & R_A
+\end{bmatrix}
+$$.
+
+Let $QR_B=(I-VV^T)B$. Then
+$$
+X+AB^T =
+\begin{bmatrix}
+U & P
+\end{bmatrix}
+K
+\begin{bmatrix}
+V & Q
+\end{bmatrix}^T
+$$
+
+and
+
+$$
+K=
+\begin{bmatrix}
+I & U^TA\\
+0 & R_A
+\end{bmatrix}
+\begin{bmatrix}
+S & 0\\
+0 & I
+\end{bmatrix}
+\begin{bmatrix}
+I & V^TB\\
+0 & R_B
+\end{bmatrix}^T
+=
+\begin{bmatrix}
+S & 0\\
+0 & 0
+\end{bmatrix}
++
+\begin{bmatrix}
+U^TA\\
+R_A
+\end{bmatrix}
+\begin{bmatrix}
+V^TB\\
+R_B
+\end{bmatrix}^T
+$$.
+
+Diagonalizing $K$ as $U'^TKV'=S'$ give the rotations $U'$ and $V'$ of the extended subspaces
+$
+\begin{bmatrix}
+U & P
+\end{bmatrix}
+$
+and
+$
+\begin{bmatrix}
+V & Q
+\end{bmatrix}
+$
+such that
+$$
+X+AB^T = \left(
+\begin{bmatrix}
+U & P
+\end{bmatrix}
+U' \right)
+S'\left(
+\begin{bmatrix}
+V & Q
+\end{bmatrix}
+V'\right)^T
+$$
+is the desired SVD.
+
+
+\section{Rank-1 Modification\label{rank}}
+
+\subsection{Update\label{update}}
+\subsection{Downdate\label{downdate}}
+\subsection{Revise\label{revise}}
+\subsection{Recenter\label{recenter}}
+
+For each operate in subsection~\ref{update}~-~\ref{recenter}
+
+\begin{enumerate}
+\item Known for~\ref{update}:
+$$US\begin{bmatrix}V^T & 0 \end{bmatrix}= \begin{bmatrix}X & 0\end{bmatrix}$$
+\item Known for~\ref{downdate}:
+$$USV^T= \begin{bmatrix}X & c\end{bmatrix}$$
+\item Known for~\ref{revise}:
+$$USV^T= \begin{bmatrix}X & c\end{bmatrix}$$
+\item Known for~\ref{recenter}:
+$$USV^T= X$$
+\end{enumerate}
+
+\section{Reference\label{reference}}
+All work within this paper is taken from Matthew Brand's article on \href{http://www.stat.osu.edu/~dmsl/thinSVDtracking.pdf}{"Fast low-rank modifications of the thing singular value decomposition."}
+
+\end{document}
