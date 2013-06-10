@@ -16,3 +16,51 @@ James Pak
 
 Notes to self: use Sage's SVD function to determine "thinness." Utilize output u,v to determine which rows/columns to
 eliminate out of a mxn matrix.
+
+
+
+
+
+r"""
+Updates to the thin SVD using NumPy.
+
+
+
+AUTHORS:
+
+- Taylor Steiger, James Pak (2013-06-10): initial version
+
+
+EXAMPLES::
+
+    sage: b=Mat(RDF,2,3).basis()
+    sage: b[0]
+    [1.0 0.0 0.0]
+    [0.0 0.0 0.0]
+
+
+We deal with the case of zero rows or zero columns::
+
+    sage: m = MatrixSpace(RDF,0,3)
+    sage: m.zero_matrix()
+    []
+
+TESTS::
+
+    sage: a = matrix(RDF,2,range(4), sparse=False)
+    sage: TestSuite(a).run()
+    sage: a = matrix(CDF,2,range(4), sparse=False)
+    sage: TestSuite(a).run()
+"""
+
+#*****************************************************************************
+#       Copyright (C) 2013 Taylor Steiger <tsteiger@uw.edu>
+#       Copyright (C) 2013 James Pak <jimmypak@uw.edu>
+#
+#  Distributed under the terms of the GNU General Public License (GPL)
+#  as published by the Free Software Foundation; either version 2 of
+#  the License, or (at your option) any later version.
+#                  http://www.gnu.org/licenses/
+#*****************************************************************************
+
+
