@@ -1,7 +1,8 @@
 r"""
 Updates to the thin SVD using NumPy.
 
-This function is a SAGE replication of Matthew Brand's article on "Fast low-rank modiﬁcations of the thin singular value decomposition." <http://www.stat.osu.edu/~dmsl/thinSVDtracking.pdf>
+This function is a SAGE replication of Matthew Brand's article on "Fast low-rank modiﬁcations
+of the thin singular value decomposition." <http://www.stat.osu.edu/~dmsl/thinSVDtracking.pdf>
 This function is an approximation to the true thin SVD, therefore, no tests are provided.
 
 AUTHORS:
@@ -57,7 +58,8 @@ def svd_update(U, S, V, X, c = None, update = False, downdate = False):
 
     - U -- a (nxn) matrix containing singular vectors of X.
 
-    - S -- a (nxn) diagonal matrix containing singular values. the ith diagonal entry is the singular value corresponding to the ith column of U.
+    - S -- a (nxn) diagonal matrix containing singular values. the ith diagonal entry
+      is the singular value corresponding to the ith column of U.
 
     - V -- a (nxn) matrix containing singular vectors of X.
 
@@ -65,7 +67,8 @@ def svd_update(U, S, V, X, c = None, update = False, downdate = False):
 
     - c -- (default: None) a column vector for revision or update of decomposition.
 
-    - update -- (default: False) boolean whether to add c to the decomposition. If true, c must also be provided.
+    - update -- (default: False) boolean whether to add c to the decomposition. If true,
+      c must also be provided.
 
     - downdate -- (default: False) boolean whether to downdate the decomposition.
 
