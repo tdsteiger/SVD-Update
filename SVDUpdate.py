@@ -1,56 +1,80 @@
+r"""
+Updates to the thin SVD using NumPy.
+
+This function is a SAGE replication of Matthew Brand's article on "Fast low-rank modiﬁcations of the thin singular value decomposition." <http://www.stat.osu.edu/~dmsl/thinSVDtracking.pdf>
+This function is an approximation to the true thin SVD, therefore, no tests are provided.
+
+AUTHORS:
+
+- Taylor Steiger, James Pak (2013-06-10): initial version
+
+
+EXAMPLES::
+
+    Update
+    
+    sage: X = np.array([[1.0,2.0,3.0,4.0],[3.0,2.0,5.0,5.0],[5.0,3.0,1.0,1.0],[7.0,7.0,7.0,7.0]])
+    sage: U, s, V = np.linalg.svd(X, full_matrices = False)
+    sage: a = np.reshape(np.array([4.0,5.0,1.0,7.0]), (-1, 1))
+    sage: U, S, V = svd_update(U, np.diag(s), V, X, a, update = True)
+    
+    Downdate
+    
+    sage: X = np.array([[1.0,2.0,3.0,4.0],[3.0,2.0,5.0,5.0],[5.0,3.0,1.0,1.0],[7.0,7.0,7.0,7.0]])
+    sage: U, s, V = np.linalg.svd(X, full_matrices = False)
+    sage: U, S, V = svd_update(U, np.diag(s), V, X, downdate = True)
+    
+    Revise
+    
+    sage: X = np.array([[1.0,2.0,3.0,4.0],[3.0,2.0,5.0,5.0],[5.0,3.0,1.0,1.0],[7.0,7.0,7.0,7.0]])
+    sage: U, s, V = np.linalg.svd(X, full_matrices = False)
+    sage: a = np.reshape(np.array([4.0,5.0,1.0,7.0]), (-1, 1))
+    sage: U, S, V = svd_update(U, np.diag(s), V, X, a)
+    
+    Recenter
+    
+    sage: X = np.array([[1.0,2.0,3.0,4.0],[3.0,2.0,5.0,5.0],[5.0,3.0,1.0,1.0],[7.0,7.0,7.0,7.0]])
+    sage: U, s, V = np.linalg.svd(X, full_matrices = False)
+    sage: U, S, V = svd_update(U, np.diag(s), V, X)
+
+"""
+
+#*****************************************************************************
+#       Copyright (C) 2013 Taylor Steiger <tsteiger@uw.edu>
+#       Copyright (C) 2013 James Pak <jimmypak@uw.edu>
+#
+#  Distributed under the terms of the GNU General Public License (GPL)
+#  as published by the Free Software Foundation; either version 2 of
+#  the License, or (at your option) any later version.
+#                  http://www.gnu.org/licenses/
+#*****************************************************************************
+
 import numpy as np
 
-def svd_update(U, S, V, X, c = None, add = False, down = False):
-    r"""
-    Updates to the thin SVD using NumPy.
-
-    This function is a SAGE replication of Matthew Brand's article on "Fast low-rank modiﬁcations of the thin singular value decomposition." <http://www.stat.osu.edu/~dmsl/thinSVDtracking.pdf>
-    This function is an approximation to the true thin SVD, therefore, no tests are provided.
-
-    AUTHORS:
-
-    - Taylor Steiger, James Pak (2013-06-10): initial version
-
-
-    EXAMPLES::
-
-        Update
-        
-        sage: X = np.array([[1.0,2.0,3.0,4.0],[3.0,2.0,5.0,5.0],[5.0,3.0,1.0,1.0],[7.0,7.0,7.0,7.0]])
-        sage: U, s, V = np.linalg.svd(X, full_matrices = False)
-        sage: a = np.reshape(np.array([4.0,5.0,1.0,7.0]), (-1, 1))
-        sage: U, S, V = svd_update(U, np.diag(s), V, X, a, add = True)
-        
-        Downdate
-        
-        sage: X = np.array([[1.0,2.0,3.0,4.0],[3.0,2.0,5.0,5.0],[5.0,3.0,1.0,1.0],[7.0,7.0,7.0,7.0]])
-        sage: U, s, V = np.linalg.svd(X, full_matrices = False)
-        sage: U, S, V = svd_update(U, np.diag(s), V, X, down = True)
-        
-        Revise
-        
-        sage: X = np.array([[1.0,2.0,3.0,4.0],[3.0,2.0,5.0,5.0],[5.0,3.0,1.0,1.0],[7.0,7.0,7.0,7.0]])
-        sage: U, s, V = np.linalg.svd(X, full_matrices = False)
-        sage: a = np.reshape(np.array([4.0,5.0,1.0,7.0]), (-1, 1))
-        sage: U, S, V = svd_update(U, np.diag(s), V, X, a)
-        
-        Recenter
-        
-        sage: X = np.array([[1.0,2.0,3.0,4.0],[3.0,2.0,5.0,5.0],[5.0,3.0,1.0,1.0],[7.0,7.0,7.0,7.0]])
-        sage: U, s, V = np.linalg.svd(X, full_matrices = False)
-        sage: U, S, V = svd_update(U, np.diag(s), V, X)
-
+def svd_update(U, S, V, X, c = None, update = False, downdate = False):
     """
-
-    #*****************************************************************************
-    #       Copyright (C) 2013 Taylor Steiger <tsteiger@uw.edu>
-    #       Copyright (C) 2013 James Pak <jimmypak@uw.edu>
-    #
-    #  Distributed under the terms of the GNU General Public License (GPL)
-    #  as published by the Free Software Foundation; either version 2 of
-    #  the License, or (at your option) any later version.
-    #                  http://www.gnu.org/licenses/
-    #*****************************************************************************
+    INPUT:
+    
+    U -- a (nxn) matrix containing singular vectors.
+    
+    S -- a (nxn) diagonal matrix containing singular values. the ith diagonal entry is the singular value corresponding to the ith column of U
+    
+    V -- a (nxn) matrix containing singular vectors.
+    
+    c -- (default: None) a column vector for revision or update of decomposition.
+    
+    update -- (default: False) boolean whether to add c to the decomposition. If true, c must also be provided.
+    
+    downdate -- (default: False) boolean whether to downdate the decomposition.
+    
+    OUTPUT:
+    
+    A 3-tuple consisting of matrices in this order:
+    
+    1. Transformed U.
+    2. Transformed S.
+    3. Transformed V.
+    """
     
     V = np.vstack([V, np.zeros(V.shape[1])])
     if down or type(c) == type(np.array([])):
@@ -88,4 +112,4 @@ def svd_update(U, S, V, X, c = None, add = False, down = False):
 
     D, P = np.linalg.eig(K)
 
-    return (np.transpose(np.linalg.inv(P)), D, P)
+    return (np.transpose(np.linalg.inv(P)), np.diag(D), P)
