@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.4.25)  10 JUN 2013 14:16
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.4.25)  10 JUN 2013 15:04
 entering extended mode
  %&-line parsing enabled.
 **\input FinalPaper.tex
@@ -778,27 +778,38 @@ Overfull \hbox (60.1029pt too wide) in paragraph at lines 183--196
 
 [4]
 
-! LaTeX Error: Unknown graphics extension: .py.
+Package pdftex.def Warning: Option `bb' does not make sense,
+(pdftex.def)                using `viewport' instead on input line 233.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
+<svd.pdf, id=77, 614.295pt x 794.97pt>
+File: svd.pdf Graphic file (type pdf)
+ <use svd.pdf>
+Overfull \hbox (269.29349pt too wide) in paragraph at lines 233--234
+ [] 
+ []
+
+! Extra }, or forgotten \endgroup.
+l.234 ...ocumentation for the SVDUpdate function}}
                                                   
-l.232 \includegraphics[width=33pc]{SVDUpdate.py}
-                                                
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
 
-[5] (./FinalPaper.aux)
+
+LaTeX Warning: Float too large for page by 63.10301pt on input line 237.
+
+[5] [6 <./svd.pdf>] (./FinalPaper.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 17247 strings out of 493848
- 355256 string characters out of 1152823
+ 17250 strings out of 493848
+ 355292 string characters out of 1152823
  468567 words of memory out of 3000000
- 20131 multiletter control sequences out of 15000+50000
+ 20134 multiletter control sequences out of 15000+50000
  10836 words of font info for 41 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  70i,16n,63p,771b,301s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -817,9 +828,9 @@ ti10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmti7.pfb></u
 sr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/te
 xmf-texlive/fonts/type1/public/doublestroke/dsrom10.pfb></usr/share/texmf-texli
 ve/fonts/type1/public/doublestroke/dsrom8.pfb>
-Output written on FinalPaper.pdf (5 pages, 185370 bytes).
+Output written on FinalPaper.pdf (6 pages, 213866 bytes).
 PDF statistics:
- 140 PDF objects out of 1000 (max. 8388607)
- 15 named destinations out of 1000 (max. 500000)
- 69 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 166 PDF objects out of 1000 (max. 8388607)
+ 16 named destinations out of 1000 (max. 500000)
+ 74 words of extra memory for PDF output out of 10000 (max. 10000000)
 
